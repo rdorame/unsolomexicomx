@@ -1,0 +1,14 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+<section class="centros-section" id="centros">
+  <div class="container">
+    <div class="title-section">
+<h1>Registrar nuevo centro</h1>
+</div>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

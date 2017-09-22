@@ -1,0 +1,183 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+    <section class="centros-section" id="centros">
+      <div class="container">
+        <div class="title-section">
+<h1>Centros de acopio</h1>
+</div>
+<ul>
+    {% for centrodeacopio in object_list %}
+    {% if centrodeacopio.urgencia == "Alta" %}
+    <li><h1>{{ centrodeacopio.centro }}</h1><h2>Urgencia {{centrodeacopio.urgencia}}</h2><br>
+    {% else %}
+    <li><h1>{{ centrodeacopio.centro }}</h1><h4>Urgencia {{centrodeacopio.urgencia}}</h4>
+    {% endif %}
+      Direccion: {{centrodeacopio.direccion}}<br>
+      Ciudad: {{centrodeacopio.ciudad}}<br>
+      Estado: {{centrodeacopio.estado}}<br>
+      Contacto: {{centrodeacopio.contacto}}<br>
+      Faltan brigadistas? {{centrodeacopio.brigadistas}}<br>
+      <a href={{ centrodeacopio.ubicacion }}>Link google maps</a><br>
+      Ultima actualizacion: {{centrodeacopio.updated_at}}<br>
+    <a href="{% url "centrodeacopio_edit" centrodeacopio.id %}">Actualizar informacion</a>
+
+    <!--<a href="{% url "centrodeacopio_delete" centrodeacopio.id %}">Borrar Centro de Acopio</a>-->
+    </li>
+    {% endfor %}
+</ul>
+		<!-- banner-section
+			================================================== -->
+		<section class="banner-section">
+			<div class="container">
+				<h2></h2>
+			</div>
+		</section>
+		<!-- End banner section -->
+
+		<!-- consulting-section
+			================================================== -->
+		<section class="consulting-section">
+			<div class="container">
+				<div class="title-section">
+					<h1>Buscas ayudar?</h1>
+          <p>Estos son los tipos de insumos que usualmente ayudan en casos de emergencia como este, para mas informacion sobre lo que se necesita en especifico, consulta los centros de acopio.</p>
+				</div>
+				<div class="consulting-box">
+					<div class="row">
+
+						<div class="col-md-4">
+							<div class="consulting-post">
+								<a href="#"><i class="fa fa-heart"></i></a>
+								<h2>Parent Education</h2>
+								<p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada </p>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="consulting-post">
+								<a href="#"><i class="fa fa-users"></i></a>
+								<h2>Help Orphans</h2>
+								<p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada </p>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="consulting-post">
+								<a href="#"><i class="fa fa-medkit"></i></a>
+								<h2>Fundacion Gentera</h2>
+                <strong>Cuenta bancaria:</strong>
+                <p>Banco: Bancomer <br>
+                  Cuenta: 018 469 1938  <br>
+                  CLABE: 0121 8000 1846 9193 85 </p>
+              </div>
+            </div>
+
+					</div>
+					<div class="row">
+
+						<div class="col-md-4">
+							<div class="consulting-post">
+								<a href="#"><i class="fa fa-star-o"></i></a>
+                <h2>Donacion a Topos</h2>
+                <strong>Cuenta bancaria:</strong>
+                <p>Banco: Santander <br>
+                  Cuenta: 920 007 092 94  <br>
+                  CLABE: 0141 8092 0007 0929 42</p>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="consulting-post">
+								<a href="#"><i class="fa fa-users"></i></a>
+                <h2>Fundacion Gentera</h2>
+                <strong>Cuenta bancaria:</strong>
+                <p>Banco: Bancomer <br>
+                  Cuenta: 018 469 1938  <br>
+                  CLABE: 0121 8000 1846 9193 85 </p>
+              </div>
+            </div>
+
+						<div class="col-md-4">
+							<div class="consulting-post">
+								<a href="#"><i class="fa fa-ambulance"></i></a>
+								<h2>Donacion a Cruz Roja</h2>
+                <p>Ingresa al sitio oficial de la Cruz Roja Mexicana</p>
+                <p>https://cruzrojadonaciones.org/</p>
+                <strong>Cuenta bancaria:</strong>
+                <p>Cuenta bancaria:
+                  Banco: Bancomer <br>
+                  Cuenta: 040 404 0406 <br>
+                  CLABE: 0121 8000 4040 4040 62  <br>
+                  A nombre de Cruz Roja Mexicana I.A.P. </p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- End consulting section -->
+
+		<!-- services-section
+			================================================== -->
+		<section class="services-section">
+			<div class="services-box">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-4">
+							<div class="services-post">
+								<div class="services-content">
+									<h2><a href="services-single.html">Centros que buscan brigadistas</a></h2>
+									<p>Estos son los centros que estan buscando ayuda humana (mano de obra para quitar escombros, repartir viveres o medicamentos).</p>
+									<ul class="serv-links">
+                    {% for centrodeacopio in object_list %}
+                      {% if centrodeacopio.brigadistas == "Si" %}
+                      <li><a href="{% url "centrodeacopio_detail" centrodeacopio.id %}"> {{ centrodeacopio.centro }} </a></li>
+                      {% endif %}
+                    {% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+
+            <div class="col-md-4">
+							<div class="services-post">
+								<div class="services-content">
+									<h2><a href="services-single.html">Centros que buscan ayuda urgente</a></h2>
+									<p>Estos son los centros que necesitan ayuda de manera urgente (viveres principalmente),</p>
+									<ul class="serv-links">
+                    {% for centrodeacopio in object_list %}
+                      {% if centrodeacopio.urgencia == "Alta" %}
+                      <li><a href="{% url "centrodeacopio_detail" centrodeacopio.id %}"> {{ centrodeacopio.centro }} </a></li>
+                      {% endif %}
+                    {% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+
+            <div class="col-md-4">
+							<div class="services-post">
+								<div class="services-content">
+									<h2><a href="services-single.html">Personas que buscan ayudar</a></h2>
+									<p>Estas personas buscan brindar apoyo haciendo uso de sus profesiones (medicos, ingenieros civiles, enfermeros).</p>
+									<ul class="serv-links">
+                    {% for centrodeacopio in object_list %}
+                      {% if centrodeacopio.brigadistas == "Si" %}
+                      <li><a href="{% url "centrodeacopio_detail" centrodeacopio.id %}"> {{ centrodeacopio.centro }} </a></li>
+                      {% endif %}
+                    {% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- End services section -->
+{% endblock %}

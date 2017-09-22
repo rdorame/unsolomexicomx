@@ -1,0 +1,31 @@
+body {
+    background: white no-repeat right bottom;
+}
+
+h2 {
+    color: red;
+    font-size: 20px;
+}
+
+h4 {
+    color: #dfc12a;
+    font-size: 20px;
+}
+
+.navbar-brand {
+  height: auto;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  color: #FFF;
+  font-size: 35px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  margin: 0 0 30px;
+  margin: 0;
+  color: #FFF !important;
+  padding: 35px 15px;
+  letter-spacing: 2.5px;
+  z-index: 99999;
+}
