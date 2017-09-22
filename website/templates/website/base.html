@@ -37,6 +37,20 @@
     <script type="text/javascript" src="{% static 'js/retina-1.1.0.min.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'js/script.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAdLNHH3OBFsBoKTHCV8-jZzJ99mtTVkA4",
+        authDomain: "unsolomexico-092017.firebaseapp.com",
+        databaseURL: "https://unsolomexico-092017.firebaseio.com",
+        projectId: "unsolomexico-092017",
+        storageBucket: "unsolomexico-092017.appspot.com",
+        messagingSenderId: "489000435438"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
 
   <body>
